@@ -10,7 +10,7 @@ public partial class Tesis
     public int IdEstudiante { get; set; }
 
     public int IdAsesor { get; set; }
-
+    public string? Titulo { get; set; }
     public string? TipoTesis { get; set; }
 
     public string? LineaInvestigacion { get; set; }

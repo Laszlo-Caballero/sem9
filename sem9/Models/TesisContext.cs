@@ -255,6 +255,10 @@ public partial class TesisContext : DbContext
             entity.Property(e => e.FechaInicio).HasColumnName("fechaInicio");
             entity.Property(e => e.IdAsesor).HasColumnName("idAsesor");
             entity.Property(e => e.IdEstudiante).HasColumnName("idEstudiante");
+            entity.Property(e => e.Titulo)
+                .HasMaxLength(200)
+                .IsUnicode(false)
+                .HasColumnName("titulo");
             entity.Property(e => e.LineaInvestigacion)
                 .HasMaxLength(200)
                 .IsUnicode(false)

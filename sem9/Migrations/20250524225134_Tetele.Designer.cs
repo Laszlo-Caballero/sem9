@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sem9.Models;
 
@@ -11,9 +12,11 @@ using sem9.Models;
 namespace sem9.Migrations
 {
     [DbContext(typeof(TesisContext))]
-    partial class TesisContextModelSnapshot : ModelSnapshot
+    [Migration("20250524225134_Tetele")]
+    partial class Tetele
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
