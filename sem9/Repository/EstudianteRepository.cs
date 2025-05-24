@@ -1,5 +1,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
+using sem9.Data;
 using sem9.Models;
 
 namespace sem9.Repository;

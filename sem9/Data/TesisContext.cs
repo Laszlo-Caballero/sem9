@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using sem9.Models;
 
-namespace sem9.Models;
+namespace sem9.Data;
 
 public partial class TesisContext : DbContext
 {
