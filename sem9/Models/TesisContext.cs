@@ -31,7 +31,7 @@ public partial class TesisContext : DbContext
 
     public virtual DbSet<SustentacionFinal> SustentacionFinals { get; set; }
 
-    public virtual DbSet<Tesis> Teses { get; set; }
+    public virtual DbSet<Tesis> Tesis { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
