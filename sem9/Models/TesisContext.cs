@@ -17,8 +17,6 @@ public partial class TesisContext : DbContext
 
     public virtual DbSet<Asesor> Asesors { get; set; }
 
-    public virtual DbSet<AsignarAsesor> AsignarAsesors { get; set; }
-
     public virtual DbSet<AsignarEstudiante> AsignarEstudiantes { get; set; }
 
     public virtual DbSet<AsignarJurado> AsignarJurados { get; set; }
@@ -40,13 +38,11 @@ public partial class TesisContext : DbContext
     {
         modelBuilder.Entity<Asesor>(entity =>
         {
-            entity.HasKey(e => e.IdAsesor).HasName("PK__ASESOR__A801FCE9550BEADD");
+            entity.HasKey(e => e.IdAsesor).HasName("PK__ASESOR__A801FCE94992E17D");
 
             entity.ToTable("ASESOR");
 
-            entity.Property(e => e.IdAsesor)
-                .ValueGeneratedNever()
-                .HasColumnName("idAsesor");
+            entity.Property(e => e.IdAsesor).HasColumnName("idAsesor");
             entity.Property(e => e.Apellido)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -69,84 +65,55 @@ public partial class TesisContext : DbContext
                 .HasColumnName("telefono");
         });
 
-        modelBuilder.Entity<AsignarAsesor>(entity =>
-        {
-            entity.HasKey(e => e.IdAsignar).HasName("PK__ASIGNAR___8319E6556D1245BF");
-
-            entity.ToTable("ASIGNAR_ASESOR");
-
-            entity.Property(e => e.IdAsignar)
-                .ValueGeneratedNever()
-                .HasColumnName("idAsignar");
-            entity.Property(e => e.IdAsesor).HasColumnName("idAsesor");
-            entity.Property(e => e.IdTesis).HasColumnName("idTesis");
-
-            entity.HasOne(d => d.IdAsesorNavigation).WithMany(p => p.AsignarAsesors)
-                .HasForeignKey(d => d.IdAsesor)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ASIGNAR_A__idAse__44FF419A");
-
-            entity.HasOne(d => d.IdTesisNavigation).WithMany(p => p.AsignarAsesors)
-                .HasForeignKey(d => d.IdTesis)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ASIGNAR_A__idTes__440B1D61");
-        });
-
         modelBuilder.Entity<AsignarEstudiante>(entity =>
         {
-            entity.HasKey(e => e.IdAsignacion).HasName("PK__ASIGNAR___E17144781DF73DD8");
+            entity.HasKey(e => e.IdAsignacion).HasName("PK__ASIGNAR___E1714478FA2194F7");
 
             entity.ToTable("ASIGNAR_ESTUDIANTE");
 
-            entity.Property(e => e.IdAsignacion)
-                .ValueGeneratedNever()
-                .HasColumnName("idAsignacion");
+            entity.Property(e => e.IdAsignacion).HasColumnName("idAsignacion");
             entity.Property(e => e.IdEstudiante).HasColumnName("idEstudiante");
             entity.Property(e => e.IdTesis).HasColumnName("idTesis");
 
             entity.HasOne(d => d.IdEstudianteNavigation).WithMany(p => p.AsignarEstudiantes)
                 .HasForeignKey(d => d.IdEstudiante)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ASIGNAR_E__idEst__412EB0B6");
+                .HasConstraintName("FK__ASIGNAR_E__idEst__4222D4EF");
 
             entity.HasOne(d => d.IdTesisNavigation).WithMany(p => p.AsignarEstudiantes)
                 .HasForeignKey(d => d.IdTesis)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ASIGNAR_E__idTes__403A8C7D");
+                .HasConstraintName("FK__ASIGNAR_E__idTes__412EB0B6");
         });
 
         modelBuilder.Entity<AsignarJurado>(entity =>
         {
-            entity.HasKey(e => e.IdAsignacion).HasName("PK__ASIGNAR___E1714478BA6D2F3A");
+            entity.HasKey(e => e.IdAsignacion).HasName("PK__ASIGNAR___E17144787D545FCE");
 
             entity.ToTable("ASIGNAR_JURADO");
 
-            entity.Property(e => e.IdAsignacion)
-                .ValueGeneratedNever()
-                .HasColumnName("idAsignacion");
+            entity.Property(e => e.IdAsignacion).HasColumnName("idAsignacion");
             entity.Property(e => e.IdJurado).HasColumnName("idJurado");
             entity.Property(e => e.IdSustentacion).HasColumnName("idSustentacion");
 
             entity.HasOne(d => d.IdJuradoNavigation).WithMany(p => p.AsignarJurados)
                 .HasForeignKey(d => d.IdJurado)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ASIGNAR_J__idJur__5165187F");
+                .HasConstraintName("FK__ASIGNAR_J__idJur__4E88ABD4");
 
             entity.HasOne(d => d.IdSustentacionNavigation).WithMany(p => p.AsignarJurados)
                 .HasForeignKey(d => d.IdSustentacion)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__ASIGNAR_J__idSus__5070F446");
+                .HasConstraintName("FK__ASIGNAR_J__idSus__4D94879B");
         });
 
         modelBuilder.Entity<Estudiante>(entity =>
         {
-            entity.HasKey(e => e.IdEstudiante).HasName("PK__ESTUDIAN__AEFFDBC50AAD64AA");
+            entity.HasKey(e => e.IdEstudiante).HasName("PK__ESTUDIAN__AEFFDBC596EDFDBA");
 
             entity.ToTable("ESTUDIANTE");
 
-            entity.Property(e => e.IdEstudiante)
-                .ValueGeneratedNever()
-                .HasColumnName("idEstudiante");
+            entity.Property(e => e.IdEstudiante).HasColumnName("idEstudiante");
             entity.Property(e => e.Apellido)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -175,13 +142,11 @@ public partial class TesisContext : DbContext
 
         modelBuilder.Entity<Jurado>(entity =>
         {
-            entity.HasKey(e => e.IdJurado).HasName("PK__JURADO__778A32DEAF695123");
+            entity.HasKey(e => e.IdJurado).HasName("PK__JURADO__778A32DE523CF6DE");
 
             entity.ToTable("JURADO");
 
-            entity.Property(e => e.IdJurado)
-                .ValueGeneratedNever()
-                .HasColumnName("idJurado");
+            entity.Property(e => e.IdJurado).HasColumnName("idJurado");
             entity.Property(e => e.Apellido)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -206,13 +171,11 @@ public partial class TesisContext : DbContext
 
         modelBuilder.Entity<PagoCarpeta>(entity =>
         {
-            entity.HasKey(e => e.IdPago).HasName("PK__PAGO_CAR__BD2295AD2DB412E0");
+            entity.HasKey(e => e.IdPago).HasName("PK__PAGO_CAR__BD2295AD2F8D773D");
 
             entity.ToTable("PAGO_CARPETA");
 
-            entity.Property(e => e.IdPago)
-                .ValueGeneratedNever()
-                .HasColumnName("idPago");
+            entity.Property(e => e.IdPago).HasColumnName("idPago");
             entity.Property(e => e.Estado)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -227,18 +190,16 @@ public partial class TesisContext : DbContext
             entity.HasOne(d => d.IdEstudianteNavigation).WithMany(p => p.PagoCarpeta)
                 .HasForeignKey(d => d.IdEstudiante)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PAGO_CARP__idEst__47DBAE45");
+                .HasConstraintName("FK__PAGO_CARP__idEst__44FF419A");
         });
 
         modelBuilder.Entity<SolicitudTesis>(entity =>
         {
-            entity.HasKey(e => e.IdSolicitud).HasName("PK__SOLICITU__D801DDB8210A1D2F");
+            entity.HasKey(e => e.IdSolicitud).HasName("PK__SOLICITU__D801DDB8CA4EC946");
 
             entity.ToTable("SOLICITUD_TESIS");
 
-            entity.Property(e => e.IdSolicitud)
-                .ValueGeneratedNever()
-                .HasColumnName("idSolicitud");
+            entity.Property(e => e.IdSolicitud).HasColumnName("idSolicitud");
             entity.Property(e => e.Estado)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -249,18 +210,16 @@ public partial class TesisContext : DbContext
             entity.HasOne(d => d.IdPagoNavigation).WithMany(p => p.SolicitudTesis)
                 .HasForeignKey(d => d.IdPago)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__SOLICITUD__idPag__4AB81AF0");
+                .HasConstraintName("FK__SOLICITUD__idPag__47DBAE45");
         });
 
         modelBuilder.Entity<SustentacionFinal>(entity =>
         {
-            entity.HasKey(e => e.IdSustentacion).HasName("PK__SUSTENTA__F5B1C0083188C7C2");
+            entity.HasKey(e => e.IdSustentacion).HasName("PK__SUSTENTA__F5B1C0086D917A78");
 
             entity.ToTable("SUSTENTACION_FINAL");
 
-            entity.Property(e => e.IdSustentacion)
-                .ValueGeneratedNever()
-                .HasColumnName("idSustentacion");
+            entity.Property(e => e.IdSustentacion).HasColumnName("idSustentacion");
             entity.Property(e => e.Calificacion)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -279,23 +238,22 @@ public partial class TesisContext : DbContext
             entity.HasOne(d => d.IdTesisNavigation).WithMany(p => p.SustentacionFinals)
                 .HasForeignKey(d => d.IdTesis)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__SUSTENTAC__idTes__4D94879B");
+                .HasConstraintName("FK__SUSTENTAC__idTes__4AB81AF0");
         });
 
         modelBuilder.Entity<Tesis>(entity =>
         {
-            entity.HasKey(e => e.IdTesis).HasName("PK__TESIS__2E2073ED92DF67BA");
+            entity.HasKey(e => e.IdTesis).HasName("PK__TESIS__2E2073ED2BDB88FE");
 
             entity.ToTable("TESIS");
 
-            entity.Property(e => e.IdTesis)
-                .ValueGeneratedNever()
-                .HasColumnName("idTesis");
+            entity.Property(e => e.IdTesis).HasColumnName("idTesis");
             entity.Property(e => e.Estado)
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("estado");
             entity.Property(e => e.FechaInicio).HasColumnName("fechaInicio");
+            entity.Property(e => e.IdAsesor).HasColumnName("idAsesor");
             entity.Property(e => e.IdEstudiante).HasColumnName("idEstudiante");
             entity.Property(e => e.LineaInvestigacion)
                 .HasMaxLength(200)
@@ -308,6 +266,11 @@ public partial class TesisContext : DbContext
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("tipoTesis");
+
+            entity.HasOne(d => d.IdAsesorNavigation).WithMany(p => p.Tesis)
+                .HasForeignKey(d => d.IdAsesor)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__TESIS__idAsesor__3E52440B");
 
             entity.HasOne(d => d.IdEstudianteNavigation).WithMany(p => p.Tesis)
                 .HasForeignKey(d => d.IdEstudiante)

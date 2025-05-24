@@ -17,5 +17,5 @@ public partial class Asesor
 
     public string? Carrera { get; set; }
 
-    public virtual ICollection<AsignarAsesor> AsignarAsesors { get; set; } = new List<AsignarAsesor>();
+    public virtual ICollection<Tesis> Tesis { get; set; } = new List<Tesis>();
 }

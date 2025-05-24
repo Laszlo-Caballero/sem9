@@ -9,6 +9,8 @@ public partial class Tesis
 
     public int IdEstudiante { get; set; }
 
+    public int IdAsesor { get; set; }
+
     public string? TipoTesis { get; set; }
 
     public string? LineaInvestigacion { get; set; }
@@ -19,9 +21,9 @@ public partial class Tesis
 
     public string? Estado { get; set; }
 
-    public virtual ICollection<AsignarAsesor> AsignarAsesors { get; set; } = new List<AsignarAsesor>();
-
     public virtual ICollection<AsignarEstudiante> AsignarEstudiantes { get; set; } = new List<AsignarEstudiante>();
+
+    public virtual Asesor IdAsesorNavigation { get; set; } = null!;
 
     public virtual Estudiante IdEstudianteNavigation { get; set; } = null!;
 

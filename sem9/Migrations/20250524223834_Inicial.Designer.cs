@@ -12,7 +12,7 @@ using sem9.Models;
 namespace sem9.Migrations
 {
     [DbContext(typeof(TesisContext))]
-    [Migration("20250524213402_Inicial")]
+    [Migration("20250524223834_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />
@@ -28,8 +28,11 @@ namespace sem9.Migrations
             modelBuilder.Entity("sem9.Models.Asesor", b =>
                 {
                     b.Property<int>("IdAsesor")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idAsesor");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAsesor"));
 
                     b.Property<string>("Apellido")
                         .HasMaxLength(100)
@@ -62,40 +65,19 @@ namespace sem9.Migrations
                         .HasColumnName("telefono");
 
                     b.HasKey("IdAsesor")
-                        .HasName("PK__ASESOR__A801FCE9550BEADD");
+                        .HasName("PK__ASESOR__A801FCE94992E17D");
 
                     b.ToTable("ASESOR", (string)null);
-                });
-
-            modelBuilder.Entity("sem9.Models.AsignarAsesor", b =>
-                {
-                    b.Property<int>("IdAsignar")
-                        .HasColumnType("int")
-                        .HasColumnName("idAsignar");
-
-                    b.Property<int>("IdAsesor")
-                        .HasColumnType("int")
-                        .HasColumnName("idAsesor");
-
-                    b.Property<int>("IdTesis")
-                        .HasColumnType("int")
-                        .HasColumnName("idTesis");
-
-                    b.HasKey("IdAsignar")
-                        .HasName("PK__ASIGNAR___8319E6556D1245BF");
-
-                    b.HasIndex("IdAsesor");
-
-                    b.HasIndex("IdTesis");
-
-                    b.ToTable("ASIGNAR_ASESOR", (string)null);
                 });
 
             modelBuilder.Entity("sem9.Models.AsignarEstudiante", b =>
                 {
                     b.Property<int>("IdAsignacion")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idAsignacion");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAsignacion"));
 
                     b.Property<int>("IdEstudiante")
                         .HasColumnType("int")
@@ -106,7 +88,7 @@ namespace sem9.Migrations
                         .HasColumnName("idTesis");
 
                     b.HasKey("IdAsignacion")
-                        .HasName("PK__ASIGNAR___E17144781DF73DD8");
+                        .HasName("PK__ASIGNAR___E1714478FA2194F7");
 
                     b.HasIndex("IdEstudiante");
 
@@ -118,8 +100,11 @@ namespace sem9.Migrations
             modelBuilder.Entity("sem9.Models.AsignarJurado", b =>
                 {
                     b.Property<int>("IdAsignacion")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idAsignacion");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdAsignacion"));
 
                     b.Property<int>("IdJurado")
                         .HasColumnType("int")
@@ -130,7 +115,7 @@ namespace sem9.Migrations
                         .HasColumnName("idSustentacion");
 
                     b.HasKey("IdAsignacion")
-                        .HasName("PK__ASIGNAR___E1714478BA6D2F3A");
+                        .HasName("PK__ASIGNAR___E17144787D545FCE");
 
                     b.HasIndex("IdJurado");
 
@@ -142,8 +127,11 @@ namespace sem9.Migrations
             modelBuilder.Entity("sem9.Models.Estudiante", b =>
                 {
                     b.Property<int>("IdEstudiante")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idEstudiante");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdEstudiante"));
 
                     b.Property<string>("Apellido")
                         .HasMaxLength(100)
@@ -182,7 +170,7 @@ namespace sem9.Migrations
                         .HasColumnName("telefono");
 
                     b.HasKey("IdEstudiante")
-                        .HasName("PK__ESTUDIAN__AEFFDBC50AAD64AA");
+                        .HasName("PK__ESTUDIAN__AEFFDBC596EDFDBA");
 
                     b.ToTable("ESTUDIANTE", (string)null);
                 });
@@ -190,8 +178,11 @@ namespace sem9.Migrations
             modelBuilder.Entity("sem9.Models.Jurado", b =>
                 {
                     b.Property<int>("IdJurado")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idJurado");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdJurado"));
 
                     b.Property<string>("Apellido")
                         .HasMaxLength(100)
@@ -224,7 +215,7 @@ namespace sem9.Migrations
                         .HasColumnName("telefono");
 
                     b.HasKey("IdJurado")
-                        .HasName("PK__JURADO__778A32DEAF695123");
+                        .HasName("PK__JURADO__778A32DE523CF6DE");
 
                     b.ToTable("JURADO", (string)null);
                 });
@@ -232,8 +223,11 @@ namespace sem9.Migrations
             modelBuilder.Entity("sem9.Models.PagoCarpeta", b =>
                 {
                     b.Property<int>("IdPago")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idPago");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPago"));
 
                     b.Property<string>("Estado")
                         .HasMaxLength(50)
@@ -256,7 +250,7 @@ namespace sem9.Migrations
                         .HasColumnName("metodoPago");
 
                     b.HasKey("IdPago")
-                        .HasName("PK__PAGO_CAR__BD2295AD2DB412E0");
+                        .HasName("PK__PAGO_CAR__BD2295AD2F8D773D");
 
                     b.HasIndex("IdEstudiante");
 
@@ -266,8 +260,11 @@ namespace sem9.Migrations
             modelBuilder.Entity("sem9.Models.SolicitudTesis", b =>
                 {
                     b.Property<int>("IdSolicitud")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idSolicitud");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdSolicitud"));
 
                     b.Property<string>("Estado")
                         .HasMaxLength(50)
@@ -284,7 +281,7 @@ namespace sem9.Migrations
                         .HasColumnName("idPago");
 
                     b.HasKey("IdSolicitud")
-                        .HasName("PK__SOLICITU__D801DDB8210A1D2F");
+                        .HasName("PK__SOLICITU__D801DDB8CA4EC946");
 
                     b.HasIndex("IdPago");
 
@@ -294,8 +291,11 @@ namespace sem9.Migrations
             modelBuilder.Entity("sem9.Models.SustentacionFinal", b =>
                 {
                     b.Property<int>("IdSustentacion")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idSustentacion");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdSustentacion"));
 
                     b.Property<string>("Calificacion")
                         .HasMaxLength(50)
@@ -324,7 +324,7 @@ namespace sem9.Migrations
                         .HasColumnName("modalidad");
 
                     b.HasKey("IdSustentacion")
-                        .HasName("PK__SUSTENTA__F5B1C0083188C7C2");
+                        .HasName("PK__SUSTENTA__F5B1C0086D917A78");
 
                     b.HasIndex("IdTesis");
 
@@ -334,8 +334,11 @@ namespace sem9.Migrations
             modelBuilder.Entity("sem9.Models.Tesis", b =>
                 {
                     b.Property<int>("IdTesis")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("idTesis");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdTesis"));
 
                     b.Property<string>("Estado")
                         .HasMaxLength(50)
@@ -346,6 +349,10 @@ namespace sem9.Migrations
                     b.Property<DateOnly?>("FechaInicio")
                         .HasColumnType("date")
                         .HasColumnName("fechaInicio");
+
+                    b.Property<int>("IdAsesor")
+                        .HasColumnType("int")
+                        .HasColumnName("idAsesor");
 
                     b.Property<int>("IdEstudiante")
                         .HasColumnType("int")
@@ -368,30 +375,13 @@ namespace sem9.Migrations
                         .HasColumnName("tipoTesis");
 
                     b.HasKey("IdTesis")
-                        .HasName("PK__TESIS__2E2073ED92DF67BA");
+                        .HasName("PK__TESIS__2E2073ED2BDB88FE");
+
+                    b.HasIndex("IdAsesor");
 
                     b.HasIndex("IdEstudiante");
 
                     b.ToTable("TESIS", (string)null);
-                });
-
-            modelBuilder.Entity("sem9.Models.AsignarAsesor", b =>
-                {
-                    b.HasOne("sem9.Models.Asesor", "IdAsesorNavigation")
-                        .WithMany("AsignarAsesors")
-                        .HasForeignKey("IdAsesor")
-                        .IsRequired()
-                        .HasConstraintName("FK__ASIGNAR_A__idAse__44FF419A");
-
-                    b.HasOne("sem9.Models.Tesis", "IdTesisNavigation")
-                        .WithMany("AsignarAsesors")
-                        .HasForeignKey("IdTesis")
-                        .IsRequired()
-                        .HasConstraintName("FK__ASIGNAR_A__idTes__440B1D61");
-
-                    b.Navigation("IdAsesorNavigation");
-
-                    b.Navigation("IdTesisNavigation");
                 });
 
             modelBuilder.Entity("sem9.Models.AsignarEstudiante", b =>
@@ -400,13 +390,13 @@ namespace sem9.Migrations
                         .WithMany("AsignarEstudiantes")
                         .HasForeignKey("IdEstudiante")
                         .IsRequired()
-                        .HasConstraintName("FK__ASIGNAR_E__idEst__412EB0B6");
+                        .HasConstraintName("FK__ASIGNAR_E__idEst__4222D4EF");
 
                     b.HasOne("sem9.Models.Tesis", "IdTesisNavigation")
                         .WithMany("AsignarEstudiantes")
                         .HasForeignKey("IdTesis")
                         .IsRequired()
-                        .HasConstraintName("FK__ASIGNAR_E__idTes__403A8C7D");
+                        .HasConstraintName("FK__ASIGNAR_E__idTes__412EB0B6");
 
                     b.Navigation("IdEstudianteNavigation");
 
@@ -419,13 +409,13 @@ namespace sem9.Migrations
                         .WithMany("AsignarJurados")
                         .HasForeignKey("IdJurado")
                         .IsRequired()
-                        .HasConstraintName("FK__ASIGNAR_J__idJur__5165187F");
+                        .HasConstraintName("FK__ASIGNAR_J__idJur__4E88ABD4");
 
                     b.HasOne("sem9.Models.SustentacionFinal", "IdSustentacionNavigation")
                         .WithMany("AsignarJurados")
                         .HasForeignKey("IdSustentacion")
                         .IsRequired()
-                        .HasConstraintName("FK__ASIGNAR_J__idSus__5070F446");
+                        .HasConstraintName("FK__ASIGNAR_J__idSus__4D94879B");
 
                     b.Navigation("IdJuradoNavigation");
 
@@ -438,7 +428,7 @@ namespace sem9.Migrations
                         .WithMany("PagoCarpeta")
                         .HasForeignKey("IdEstudiante")
                         .IsRequired()
-                        .HasConstraintName("FK__PAGO_CARP__idEst__47DBAE45");
+                        .HasConstraintName("FK__PAGO_CARP__idEst__44FF419A");
 
                     b.Navigation("IdEstudianteNavigation");
                 });
@@ -449,7 +439,7 @@ namespace sem9.Migrations
                         .WithMany("SolicitudTesis")
                         .HasForeignKey("IdPago")
                         .IsRequired()
-                        .HasConstraintName("FK__SOLICITUD__idPag__4AB81AF0");
+                        .HasConstraintName("FK__SOLICITUD__idPag__47DBAE45");
 
                     b.Navigation("IdPagoNavigation");
                 });
@@ -460,25 +450,33 @@ namespace sem9.Migrations
                         .WithMany("SustentacionFinals")
                         .HasForeignKey("IdTesis")
                         .IsRequired()
-                        .HasConstraintName("FK__SUSTENTAC__idTes__4D94879B");
+                        .HasConstraintName("FK__SUSTENTAC__idTes__4AB81AF0");
 
                     b.Navigation("IdTesisNavigation");
                 });
 
             modelBuilder.Entity("sem9.Models.Tesis", b =>
                 {
+                    b.HasOne("sem9.Models.Asesor", "IdAsesorNavigation")
+                        .WithMany("Tesis")
+                        .HasForeignKey("IdAsesor")
+                        .IsRequired()
+                        .HasConstraintName("FK__TESIS__idAsesor__3E52440B");
+
                     b.HasOne("sem9.Models.Estudiante", "IdEstudianteNavigation")
                         .WithMany("Tesis")
                         .HasForeignKey("IdEstudiante")
                         .IsRequired()
                         .HasConstraintName("FK__TESIS__idEstudia__3D5E1FD2");
 
+                    b.Navigation("IdAsesorNavigation");
+
                     b.Navigation("IdEstudianteNavigation");
                 });
 
             modelBuilder.Entity("sem9.Models.Asesor", b =>
                 {
-                    b.Navigation("AsignarAsesors");
+                    b.Navigation("Tesis");
                 });
 
             modelBuilder.Entity("sem9.Models.Estudiante", b =>
@@ -507,8 +505,6 @@ namespace sem9.Migrations
 
             modelBuilder.Entity("sem9.Models.Tesis", b =>
                 {
-                    b.Navigation("AsignarAsesors");
-
                     b.Navigation("AsignarEstudiantes");
 
                     b.Navigation("SustentacionFinals");

@@ -1,5 +1,5 @@
 CREATE TABLE ESTUDIANTE (
-    idEstudiante INT PRIMARY KEY,
+    idEstudiante INT IDENTITY(1,1) PRIMARY KEY ,
     nombre VARCHAR(100),
     apellido VARCHAR(100),
     telefono VARCHAR(20),
@@ -9,7 +9,7 @@ CREATE TABLE ESTUDIANTE (
 );
 
 CREATE TABLE ASESOR (
-    idAsesor INT PRIMARY KEY,
+    idAsesor INT IDENTITY(1,1) PRIMARY KEY,
     nombre VARCHAR(100),
     apellido VARCHAR(100),
     telefono VARCHAR(20),
@@ -18,7 +18,7 @@ CREATE TABLE ASESOR (
 );
 
 CREATE TABLE JURADO (
-    idJurado INT PRIMARY KEY,
+    idJurado INT IDENTITY(1,1) PRIMARY KEY,
     nombre VARCHAR(100),
     apellido VARCHAR(100),
     telefono VARCHAR(20),
@@ -27,34 +27,28 @@ CREATE TABLE JURADO (
 );
 
 CREATE TABLE TESIS (
-    idTesis INT PRIMARY KEY,
+    idTesis INT IDENTITY(1,1) PRIMARY KEY,
     idEstudiante INT NOT NULL,
+	idAsesor INT NOT NULL,
     tipoTesis VARCHAR(100),
     lineaInvestigacion VARCHAR(200),
     objetivo TEXT,
     fechaInicio DATE,
     estado VARCHAR(50),
-    FOREIGN KEY (idEstudiante) REFERENCES ESTUDIANTE(idEstudiante)
+    FOREIGN KEY (idEstudiante) REFERENCES ESTUDIANTE(idEstudiante),
+    FOREIGN KEY (idAsesor) REFERENCES ASESOR(idAsesor)
 );
 
 CREATE TABLE ASIGNAR_ESTUDIANTE (
-    idAsignacion INT PRIMARY KEY,
+    idAsignacion INT IDENTITY(1,1) PRIMARY KEY,
     idTesis INT NOT NULL,
     idEstudiante INT NOT NULL,
     FOREIGN KEY (idTesis) REFERENCES TESIS(idTesis),
     FOREIGN KEY (idEstudiante) REFERENCES ESTUDIANTE(idEstudiante)
 );
 
-CREATE TABLE ASIGNAR_ASESOR (
-    idAsignar INT PRIMARY KEY,
-    idTesis INT NOT NULL,
-    idAsesor INT NOT NULL,
-    FOREIGN KEY (idTesis) REFERENCES TESIS(idTesis),
-    FOREIGN KEY (idAsesor) REFERENCES ASESOR(idAsesor)
-);
-
 CREATE TABLE PAGO_CARPETA (
-    idPago INT PRIMARY KEY,
+    idPago INT IDENTITY(1,1) PRIMARY KEY,
     idEstudiante INT NOT NULL,
     metodoPago VARCHAR(100),
     fecha DATE,
@@ -63,7 +57,7 @@ CREATE TABLE PAGO_CARPETA (
 );
 
 CREATE TABLE SOLICITUD_TESIS (
-    idSolicitud INT PRIMARY KEY,
+    idSolicitud INT IDENTITY(1,1) PRIMARY KEY,
     idPago INT NOT NULL,
     fecha DATE,
     estado VARCHAR(50),
@@ -71,7 +65,7 @@ CREATE TABLE SOLICITUD_TESIS (
 );
 
 CREATE TABLE SUSTENTACION_FINAL (
-    idSustentacion INT PRIMARY KEY,
+    idSustentacion INT IDENTITY(1,1) PRIMARY KEY,
     idTesis INT NOT NULL,
     fecha DATE,
     modalidad VARCHAR(100),
@@ -81,7 +75,7 @@ CREATE TABLE SUSTENTACION_FINAL (
 );
 
 CREATE TABLE ASIGNAR_JURADO (
-    idAsignacion INT PRIMARY KEY,
+    idAsignacion INT IDENTITY(1,1) PRIMARY KEY,
     idSustentacion INT NOT NULL,
     idJurado INT NOT NULL,
     FOREIGN KEY (idSustentacion) REFERENCES SUSTENTACION_FINAL(idSustentacion),
