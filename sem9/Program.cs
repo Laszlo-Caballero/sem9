@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using sem9.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<TesisContext>(options =>
+    options.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
