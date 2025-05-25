@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using sem9.Data;
 using sem9.Models;
+using sem9.Repository.AsesorRepo;
+using sem9.Repository.TesisRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<TesisContext>(options =>
     options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<IAsesorRepository, AsesorRepository>();
+builder.Services.AddScoped<ITesisRepository, TesisRepository>();
+
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
