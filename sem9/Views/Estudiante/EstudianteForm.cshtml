@@ -1,0 +1,50 @@
+﻿@model sem9.Models.Estudiante
+
+@{
+    var isEdit = Model.IdEstudiante > 0;
+    ViewData["Title"] = isEdit ? "Editar Estudiante" : "Registrar Estudiante";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="@(isEdit ? "Edit" : "Create")" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @if (isEdit)
+    {
+        <input type="hidden" asp-for="IdEstudiante" />
+    }
+
+    <div class="form-group">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Apellido"></label>
+        <input asp-for="Apellido" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Telefono"></label>
+        <input asp-for="Telefono" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Direccion"></label>
+        <input asp-for="Direccion" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Carrera"></label>
+        <input asp-for="Carrera" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary mt-2">Cancelar</a>
+</form>

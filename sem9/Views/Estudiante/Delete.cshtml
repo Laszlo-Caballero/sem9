@@ -1,0 +1,19 @@
+﻿@model sem9.Models.Estudiante
+
+@{
+    ViewData["Title"] = "Eliminar Estudiante";
+}
+
+<h2>¿Estás seguro de que deseas eliminar este estudiante?</h2>
+
+<div>
+    <h4>@Model.Nombre @Model.Apellido</h4>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Carrera:</strong> @Model.Carrera</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="IdEstudiante" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

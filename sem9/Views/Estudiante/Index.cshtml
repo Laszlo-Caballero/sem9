@@ -1,0 +1,41 @@
+﻿@model IEnumerable<sem9.Models.Estudiante>
+
+@{
+    ViewData["Title"] = "Lista de Estudiantes";
+}
+
+<h2>Lista de Estudiantes</h2>
+
+<a class="btn btn-primary mb-3" asp-action="Create">Registrar Nuevo Estudiante</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Email</th>
+            <th>Carrera</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.IdEstudiante</td>
+                <td>@e.Nombre</td>
+                <td>@e.Apellido</td>
+                <td>@e.Telefono</td>
+                <td>@e.Email</td>
+                <td>@e.Carrera</td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@e.IdEstudiante">Ver</a>
+                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@e.IdEstudiante">Editar</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@e.IdEstudiante">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
