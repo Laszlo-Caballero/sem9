@@ -6,9 +6,6 @@ namespace sem9.Models;
 public partial class Tesis
 {
     public int IdTesis { get; set; }
-
-    public int IdEstudiante { get; set; }
-
     public int IdAsesor { get; set; }
     public string? Titulo { get; set; }
     public string? TipoTesis { get; set; }
@@ -24,8 +21,6 @@ public partial class Tesis
     public virtual ICollection<AsignarEstudiante> AsignarEstudiantes { get; set; } = new List<AsignarEstudiante>();
 
     public virtual Asesor IdAsesorNavigation { get; set; } = null!;
-
-    public virtual Estudiante IdEstudianteNavigation { get; set; } = null!;
 
     public virtual ICollection<SustentacionFinal> SustentacionFinals { get; set; } = new List<SustentacionFinal>();
 }

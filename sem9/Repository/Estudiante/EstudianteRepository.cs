@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using sem9.Data;
 using sem9.Models;
 
-namespace sem9.Repository;
+namespace sem9.Repository.EstudianteRepository;
 
 public class EstudianteRepository : IEstudianteRepository
 {

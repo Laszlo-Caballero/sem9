@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using sem9.Data;
 using sem9.Models;
+
 
 namespace sem9.Controllers
 {

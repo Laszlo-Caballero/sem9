@@ -29,7 +29,7 @@ namespace sem9.Controllers
         public async Task<IActionResult> Create()
         {
             var tesis = await _tesisRepository.obtenerTesis();
-            ViewBag.Tesis = new SelectList(tesis as IEnumerable<Tesis>, "idTesis", "titulo");
+            ViewBag.Tesis = new SelectList(tesis as IEnumerable<Tesis>, "IdTesis", "Titulo");
             return View("Create");
         }
 

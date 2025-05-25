@@ -3,32 +3,28 @@
 <form asp-action="Create">
     <div class="form-group">
         <label for="Nombre">Nombre</label>
-        <input type="text" class="form-control" id="Nombre" name="Nombre"
-               value="@Model?.Nombre" required />
+        <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model?.Nombre" required />
     </div>
     <div class="form-group">
         <label for="Apellido">Apellido</label>
-        <input type="text" class="form-control" id="Apellido" name="Apellido"
-               value="@Model?.Apellido" required />
+        <input type="text" class="form-control" id="Apellido" name="Apellido" value="@Model?.Apellido" required />
     </div>
     <div class="form-group">
         <label for="Telefono">Telefono</label>
-        <input type="text" class="form-control" id="Telefono" name="Telefono"
-               value="@Model?.Telefono" required />
+        <input type="text" class="form-control" id="Telefono" name="Telefono" value="@Model?.Telefono" required />
     </div>
     <div class="form-group">
         <label for="Email">Email</label>
-        <input type="email" class="form-control" id="Email" name="Email"
-               value="@Model?.Email" required />
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model?.Email" required />
     </div>
     <div class="form-group">
         <label for="Carrera">Carrera</label>
-        <input type="text" class="form-control" id="Carrera" name="Carrera"
-               value="@Model?.Carrera" required />
+        <input type="text" class="form-control" id="Carrera" name="Carrera" value="@Model?.Carrera" required />
     </div>
     <div class="form-group">
         <label for="idTesis">Tesis</label>
         <select class="form-control" id="idTesis" name="idTesis">
+            <option value="">Seleccione una tesis</option>
             @if (ViewBag.Tesis != null)
             {
                 foreach (var tesis in ViewBag.Tesis)
