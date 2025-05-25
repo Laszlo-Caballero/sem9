@@ -1,0 +1,51 @@
+﻿@model sem9.Models.Tesis
+
+@{
+    ViewData["Title"] = "Registrar Tesis";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label for="Titulo">Título</label>
+        <input type="text" class="form-control" id="Titulo" name="Titulo" value="@Model?.Titulo" required />
+    </div>
+
+    <div class="form-group">
+        <label for="TipoTesis">Tipo de Tesis</label>
+        <input type="text" class="form-control" id="TipoTesis" name="TipoTesis" value="@Model?.TipoTesis" required />
+    </div>
+
+    <div class="form-group">
+        <label for="LineaInvestigacion">Línea de Investigación</label>
+        <input type="text" class="form-control" id="LineaInvestigacion" name="LineaInvestigacion" value="@Model?.LineaInvestigacion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Objetivo">Objetivo</label>
+        <textarea class="form-control" id="Objetivo" name="Objetivo">@Model?.Objetivo</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="FechaInicio">Fecha de Inicio</label>
+        <input type="date" class="form-control" id="FechaInicio" name="FechaInicio" value="@Model?.FechaInicio.ToString()"
+    </div>
+
+    <div class="form-group">
+        <label for="Estado">Estado</label>
+        <input type="text" class="form-control" id="Estado" name="Estado" value="@Model?.Estado" required />
+    </div>
+
+    <div class="form-group">
+        <label for="idEstudiante">Estudiante</label>
+        <select class="form-control" id="idEstudiante" name="idEstudiante">
+            @foreach (var est in ViewBag.Estudiantes)
+            {
+                <option value="@est.Value">@est.Text</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Registrar</button>
+</form>

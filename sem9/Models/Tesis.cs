@@ -17,7 +17,7 @@ public partial class Tesis
 
     public string? Objetivo { get; set; }
 
-    public DateOnly? FechaInicio { get; set; }
+    public DateTime? FechaInicio { get; set; }
 
     public string? Estado { get; set; }
 
