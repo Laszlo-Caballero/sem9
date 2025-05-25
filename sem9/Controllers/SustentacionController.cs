@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using sem9.Data;
 using sem9.Models;
-using sem9.Repositories;
+using sem9.Repository.SustentacionRepo;
 
 namespace sem9.Controllers
-{ 
+{
     public class SustentacionController : Controller
     {
         private readonly ISustentacionRepository _sustentacionRepository;

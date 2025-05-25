@@ -1,6 +1,6 @@
 ﻿using sem9.Models;
 
-namespace sem9.Repositories
+namespace sem9.Repository.SustentacionRepo
 {
     public interface ISustentacionRepository
     {

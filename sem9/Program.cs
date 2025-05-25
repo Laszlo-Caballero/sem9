@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using sem9.Data;
 using sem9.Models;
 using sem9.Data;
-using sem9.Repositories;
 using sem9.Repository.AsesorRepo;
 using sem9.Repository.TesisRepository;
+using sem9.Repository.SustentacionRepo;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using sem9.Models;
 
-namespace sem9.Repositories
+namespace sem9.Repository.SustentacionRepo
 {
     public class SustentacionRepository : ISustentacionRepository
     {
