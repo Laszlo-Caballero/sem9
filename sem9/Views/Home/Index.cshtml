@@ -3,29 +3,32 @@
 }
 <div class="container d-flex flex-row gap-2 w-100">
     <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Tesis</h5>
-    <a asp-action="Details" class="btn btn-primary">Ver detalles</a>
-  </div>
+        <div class="card-body">
+            <h5 class="card-title">Tesis</h5>
+            <a href="@Url.Action("Index", "Tesis")" class="btn btn-primary">Ver detalles</a>
+        </div>
     </div>
     <div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Estudiante</h5>
-        <a asp-action="Details" class="btn btn-primary">Ver detalles</a>
-    </div>
+        <div class="card-body">
+            <h5 class="card-title">Estudiante</h5>
+            <a href="@Url.Action("Index", "Estudiante")" class="btn btn-primary">Ver detalles</a>
+        </div>
     </div>
 
-  
+
     <div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">Asesor</h5>
-        <a asp-action="Details" class="btn btn-primary">Ver detalles</a>
+        <div class="card-body">
+            <h5 class="card-title">Asesor</h5>
+            <a href="@Url.Action("Index", "Asesor")" class="btn btn-primary">Ir a Asesores</a>
+        </div>
     </div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Sustentacion</h5>
+            <a asp-controller="Sustentacion" asp-action="Index" class="btn btn-primary">Ver detalles</a>
+        </div>
     </div>
-        <div class="card" style="width: 18rem;"></div>
-    <div class="card-body">
-        <h5 class="card-title">Sustentacion</h5>
-        <a asp-controller="Sustentacion" asp-action="Index" class="btn btn-primary">Ver detalles</a>
-    </div>
-    </div>
+
+
 </div>

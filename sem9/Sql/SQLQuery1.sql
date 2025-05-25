@@ -28,14 +28,12 @@ CREATE TABLE JURADO (
 
 CREATE TABLE TESIS (
     idTesis INT IDENTITY(1,1) PRIMARY KEY,
-    idEstudiante INT NOT NULL,
 	idAsesor INT NOT NULL,
     tipoTesis VARCHAR(100),
     lineaInvestigacion VARCHAR(200),
     objetivo TEXT,
     fechaInicio DATE,
     estado VARCHAR(50),
-    FOREIGN KEY (idEstudiante) REFERENCES ESTUDIANTE(idEstudiante),
     FOREIGN KEY (idAsesor) REFERENCES ASESOR(idAsesor)
 );
 

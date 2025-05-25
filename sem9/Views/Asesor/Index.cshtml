@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Asesor>
+<h1>Asesores</h1>
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Crear Nuevo Asesor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Carrera</th>
+            <th>Tesis</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var asesor in Model)
+        {
+            <tr>
+                <td>@asesor.Nombre</td>
+                <td>@asesor.Apellido</td>
+                <td>@asesor.Telefono</td>
+                <td>@asesor.Email</td>
+                <td>@asesor.Carrera</td>
+                <td>
+                    @foreach (var tesis in asesor.Tesis)
+                    {
+                        <p>@tesis.Titulo</p>
+                    }
+                </td>
+                   
+                <td>
+                    <a href="@Url.Action("Edit", "Autor", new { id = asesor.IdAsesor })">Editar</a> |
+                    <a href="@Url.Action("Delete", "Autor", new { id = asesor.IdAsesor })">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

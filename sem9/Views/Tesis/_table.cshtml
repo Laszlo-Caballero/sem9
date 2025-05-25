@@ -1,0 +1,47 @@
+﻿@model IEnumerable<sem9.Models.Tesis>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Tipo de Tesis</th>
+            <th>Linea Investigacion</th>
+            <th>Objetivo</th>
+            <th>Fecha de Publicacion</th>
+            <th>Estado</th>
+            <th>Estudiantes</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tesis in Model)
+        {
+            <tr>
+                <td>@tesis.Titulo</td>
+                <td>@tesis.TipoTesis</td>
+                <td>@tesis.LineaInvestigacion</td>
+                <td>@tesis.Objetivo</td>
+                <td>@tesis.FechaInicio.ToString().Split(" ")[0]</td>
+                <td>@tesis.Estado</td>
+                <td>
+                    @foreach (var estudiante in tesis.AsignarEstudiantes)
+                    {
+                        <p>@estudiante.IdEstudianteNavigation.Nombre</p>
+                    }
+                </td>
+                <td>
+                    <button class="btn-primary" data-id="@tesis.IdTesis" id="btnDeshabilitar">
+                        @if (tesis.Estado == "Activo")
+                        {
+                            @:Deshabilitar
+                        }
+                        else
+                        {
+                            @:Habilitar
+                        }
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

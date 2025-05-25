@@ -6,16 +6,14 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sem9.Data;
-using sem9.Models;
-using sem9.Data;
 
 #nullable disable
 
 namespace sem9.Migrations
 {
     [DbContext(typeof(TesisContext))]
-    [Migration("20250524223834_Inicial")]
-    partial class Inicial
+    [Migration("20250525084923_muchos")]
+    partial class muchos
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -348,17 +346,13 @@ namespace sem9.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("estado");
 
-                    b.Property<DateOnly?>("FechaInicio")
-                        .HasColumnType("date")
+                    b.Property<DateTime?>("FechaInicio")
+                        .HasColumnType("datetime2")
                         .HasColumnName("fechaInicio");
 
                     b.Property<int>("IdAsesor")
                         .HasColumnType("int")
                         .HasColumnName("idAsesor");
-
-                    b.Property<int>("IdEstudiante")
-                        .HasColumnType("int")
-                        .HasColumnName("idEstudiante");
 
                     b.Property<string>("LineaInvestigacion")
                         .HasMaxLength(200)
@@ -376,12 +370,16 @@ namespace sem9.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("tipoTesis");
 
+                    b.Property<string>("Titulo")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("titulo");
+
                     b.HasKey("IdTesis")
                         .HasName("PK__TESIS__2E2073ED2BDB88FE");
 
                     b.HasIndex("IdAsesor");
-
-                    b.HasIndex("IdEstudiante");
 
                     b.ToTable("TESIS", (string)null);
                 });
@@ -465,15 +463,7 @@ namespace sem9.Migrations
                         .IsRequired()
                         .HasConstraintName("FK__TESIS__idAsesor__3E52440B");
 
-                    b.HasOne("sem9.Models.Estudiante", "IdEstudianteNavigation")
-                        .WithMany("Tesis")
-                        .HasForeignKey("IdEstudiante")
-                        .IsRequired()
-                        .HasConstraintName("FK__TESIS__idEstudia__3D5E1FD2");
-
                     b.Navigation("IdAsesorNavigation");
-
-                    b.Navigation("IdEstudianteNavigation");
                 });
 
             modelBuilder.Entity("sem9.Models.Asesor", b =>
@@ -486,8 +476,6 @@ namespace sem9.Migrations
                     b.Navigation("AsignarEstudiantes");
 
                     b.Navigation("PagoCarpeta");
-
-                    b.Navigation("Tesis");
                 });
 
             modelBuilder.Entity("sem9.Models.Jurado", b =>

@@ -1,28 +1,22 @@
 ﻿@model IEnumerable<Tesis>
 
 @{
-    ViewData["Title"] = "Tesis";
+	ViewData["Title"] = "Tesis";
 }
 
 <h1>Tesis</h1>
 <p>
 	<a class="btn btn-primary" href="@Url.Action("Create")">Crear Nueva Tesis</a>
 </p>
-<table class="table">
-	<thead>
-		<tr>
-			<th>Título</th>
-			<th>Autor</th>
-			<th>Categorías</th>
-			<th>Acciones</th>
-		</tr>
-	</thead>
-	<tbody>
-		@foreach (var tesis in Model)
-		{
-			<tr>
-				<td>@tesis.TipoTesis</td>
-			</tr>
-		}
-	</tbody>
-</table>
+
+
+<div class="table-responsive">
+	<div id="tesistable">
+		@await Html.PartialAsync("_table", Model)
+	</div>
+</div>
+
+
+@section scripts {
+	<script src="~/js/tesis.js"></script>
+}

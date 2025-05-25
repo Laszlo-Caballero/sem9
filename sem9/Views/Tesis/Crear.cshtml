@@ -1,0 +1,86 @@
+﻿@model sem9.Models.Tesis
+
+@{
+    ViewData["Title"] = "Registrar Tesis";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+
+<form asp-action="Create" id="formTesis">
+    <div class="form-group">
+        <label for="Titulo">Título</label>
+        <input type="text" class="form-control" id="Titulo" name="Titulo" value="@Model?.Titulo" required />
+    </div>
+
+    <div class="form-group">
+        <label for="TipoTesis">Tipo de Tesis</label>
+        <input type="text" class="form-control" id="TipoTesis" name="TipoTesis" value="@Model?.TipoTesis" required />
+    </div>
+
+    <div class="form-group">
+        <label for="LineaInvestigacion">Línea de Investigación</label>
+        <input type="text" class="form-control" id="LineaInvestigacion" name="LineaInvestigacion"
+            value="@Model?.LineaInvestigacion" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Objetivo">Objetivo</label>
+        <textarea class="form-control" id="Objetivo" name="Objetivo">@Model?.Objetivo</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="FechaInicio">Fecha de Inicio</label>
+        <input type="date" class="form-control" id="FechaInicio" name="FechaInicio"
+            value="@(Model?.FechaInicio.Value.ToString("yyyy-MM-dd"))" required />
+    </div>
+
+    <div class="form-group">
+        <label for="Estado">Estado</label>
+        <input type="text" class="form-control" id="Estado" name="Estado" value="@Model?.Estado" required />
+    </div>
+
+    <div class="form-group">
+        <label for="selectEstudiante">Estudiante</label>
+        <select class="form-control" id="selectEstudiante" name="selectEstudiante" required>
+
+            <option value="">Seleccione un estudiante</option>
+            @{
+                foreach (var item in ViewBag.Estudiantes)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            }
+        </select>
+    </div>
+
+    <div id="estudiantes" class="py-4 d-flex flex-wrap gap-2">
+
+    </div>
+
+    <div class="form-group">
+        <label for="idAsesor">Asesor</label>
+        <select class="form-control" id="idAsesor" name="idAsesor" required>
+            @{
+                foreach (var item in ViewBag.Asesores)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            }
+        </select>
+    </div>
+
+
+    <button type="submit" class="btn btn-success">Registrar</button>
+</form>
+
+@section Scripts {
+    <script src="~/js/btnEstudiante.js"></script>
+}

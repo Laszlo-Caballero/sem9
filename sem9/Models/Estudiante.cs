@@ -23,5 +23,4 @@ public partial class Estudiante
 
     public virtual ICollection<PagoCarpeta> PagoCarpeta { get; set; } = new List<PagoCarpeta>();
 
-    public virtual ICollection<Tesis> Tesis { get; set; } = new List<Tesis>();
 }

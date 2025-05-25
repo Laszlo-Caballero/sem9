@@ -255,7 +255,6 @@ public partial class TesisContext : DbContext
                 .HasColumnName("estado");
             entity.Property(e => e.FechaInicio).HasColumnName("fechaInicio");
             entity.Property(e => e.IdAsesor).HasColumnName("idAsesor");
-            entity.Property(e => e.IdEstudiante).HasColumnName("idEstudiante");
             entity.Property(e => e.Titulo)
                 .HasMaxLength(200)
                 .IsUnicode(false)
@@ -277,10 +276,6 @@ public partial class TesisContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__TESIS__idAsesor__3E52440B");
 
-            entity.HasOne(d => d.IdEstudianteNavigation).WithMany(p => p.Tesis)
-                .HasForeignKey(d => d.IdEstudiante)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__TESIS__idEstudia__3D5E1FD2");
         });
 
         OnModelCreatingPartial(modelBuilder);
