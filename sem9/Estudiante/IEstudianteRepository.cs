@@ -1,7 +1,7 @@
 using System;
 using sem9.Models;
 
-namespace sem9.Repository;
+namespace sem9.Estudiante;
 
 public interface IEstudianteRepository
 {
