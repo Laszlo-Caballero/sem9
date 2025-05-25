@@ -1,0 +1,59 @@
+﻿@model IEnumerable<sem9.Models.SustentacionFinal>
+
+@{
+    ViewData["Title"] = "Sustentaciones";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+
+<h1>Sustentaciones</h1>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Crear nueva sustentación</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Modalidad</th>
+            <th>Calificación</th>
+            <th>Estado</th>
+            <th>Título de Tesis</th>
+            <th>Jurados</th> <!-- Nueva columna -->
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sustentacion in Model)
+        {
+            <tr>
+                <td>@(sustentacion.Fecha?.ToString("yyyy-MM-dd"))</td>
+                <td>@sustentacion.Modalidad</td>
+                <td>@sustentacion.Calificacion</td>
+                <td>@sustentacion.Estado</td>
+                <td>@sustentacion.IdTesisNavigation?.Titulo</td>
+                <td>
+                    @if (sustentacion.AsignarJurados != null && sustentacion.AsignarJurados.Any())
+                    {
+                        <!-- Mostrar nombres de jurados separados por coma -->
+                        @string.Join(", ", sustentacion.AsignarJurados.Select(aj => aj.IdJuradoNavigation.Nombre + " " + aj.IdJuradoNavigation.Apellido))
+                    }
+                    else
+                    {
+                        <em>No asignados</em>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-danger" href="@Url.Action("Delete", new { id = sustentacion.IdSustentacion })">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

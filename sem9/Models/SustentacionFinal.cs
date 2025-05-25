@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace sem9.Models;
 
@@ -20,4 +21,7 @@ public partial class SustentacionFinal
     public virtual ICollection<AsignarJurado> AsignarJurados { get; set; } = new List<AsignarJurado>();
 
     public virtual Tesis IdTesisNavigation { get; set; } = null!;
+    [NotMapped]
+    public List<int> SelectedJurados { get; set; } = new List<int>();
+
 }

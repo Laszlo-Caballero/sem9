@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using sem9.Models;
 using sem9.Data;
 
 #nullable disable
@@ -13,8 +12,8 @@ using sem9.Data;
 namespace sem9.Migrations
 {
     [DbContext(typeof(TesisContext))]
-    [Migration("20250524223834_Inicial")]
-    partial class Inicial
+    [Migration("20250525032355_NombreDeTuNuevaMigracion")]
+    partial class NombreDeTuNuevaMigracion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -310,8 +309,8 @@ namespace sem9.Migrations
                         .HasColumnType("varchar(50)")
                         .HasColumnName("estado");
 
-                    b.Property<DateOnly?>("Fecha")
-                        .HasColumnType("date")
+                    b.Property<DateTime?>("Fecha")
+                        .HasColumnType("datetime2")
                         .HasColumnName("fecha");
 
                     b.Property<int>("IdTesis")
@@ -374,6 +373,12 @@ namespace sem9.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(100)")
                         .HasColumnName("tipoTesis");
+
+                    b.Property<string>("Titulo")
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("titulo");
 
                     b.HasKey("IdTesis")
                         .HasName("PK__TESIS__2E2073ED2BDB88FE");
